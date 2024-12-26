@@ -18,7 +18,7 @@
 //!
 //! Usage:
 //! - Include this header file directly in your C project.
-//! - Initialize textures using either float (normalized) or uint32_t data.
+//! - Initialize textures using either double (normalized) or uint32_t data.
 //! - Serialize and deserialize textures via CSV files for easy persistence.
 //!
 //! Features:

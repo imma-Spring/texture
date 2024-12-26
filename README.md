@@ -33,14 +33,14 @@ To use the library, simply include the `texture.h` file in your C project.
 
 ### 2. Initialize a Texture
 
-You can initialize a texture using either `float` (normalized) or `uint32_t` data.
+You can initialize a texture using either `double` (normalized) or `uint32_t` data.
 
-- **For normalized `float` data** (values between 0.0 and 1.0):
+- **For normalized `double` data** (values between 0.0 and 1.0):
 
 ```c
-float textureData[] = { 0.0f, 1.0f, 0.5f, ... };
+double textureData[] = { 0.0, 1.0, 0.5, ... };
 Texture texture;
-initTexture_f(&texture, 4, 4, textureData); // 4x4 texture
+initTexture_d(&texture, 4, 4, textureData); // 4x4 texture
 ```
 
 - **For `uint32_t` data**:
@@ -86,9 +86,9 @@ Here’s a quick example of how you can use the library in a project:
 
 int main() {
     // Initialize a texture with some normalized float data
-    float textureData[] = { 0.0f, 1.0f, 0.5f, 0.25f };
+    double textureData[] = { 0.0, 1.0, 0.5, 0.25 };
     Texture texture;
-    initTexture_f(&texture, 2, 2, textureData);
+    initTexture_d(&texture, 2, 2, textureData);
 
     // Write the texture to a CSV file
     writeTexture(&texture, "myTexture.csv");
@@ -109,8 +109,8 @@ int main() {
 
 ## Functions
 
-### `void initTexture_f(Texture *texture, uint16_t w, uint16_t h, const float *data)`
-Initializes a texture using float data, scaling each value to the range of `uint32_t`.
+### `void initTexture_f(Texture *texture, uint16_t w, uint16_t h, const double *data)`
+Initializes a texture using double data, scaling each value to the range of `uint32_t`.
 
 ### `void initTexture_i(Texture *texture, uint16_t w, uint16_t h, const uint32_t *data)`
 Initializes a texture using `uint32_t` data directly.
