@@ -62,8 +62,8 @@ typedef struct {
  * @param data Pointer to an array of float values, each in the range
  * [0.0, 1.0].
  */
-inline void initTexture_f(Texture *texture, uint16_t w, uint16_t h,
-                          const float *data) {
+void initTexture_d(Texture *texture, uint16_t w, uint16_t h,
+                   const double *data) {
   texture->w = w;
   texture->h = h;
   texture->data = (uint32_t *)calloc(w * h, sizeof(uint32_t));
@@ -82,8 +82,8 @@ inline void initTexture_f(Texture *texture, uint16_t w, uint16_t h,
  * @param data Pointer to an array of uint32_t values to initialize the
  * texture's data.
  */
-inline void initTexture_i(Texture *texture, uint16_t w, uint16_t h,
-                          const uint32_t *data) {
+void initTexture_i(Texture *texture, uint16_t w, uint16_t h,
+                   const uint32_t *data) {
   texture->w = w;
   texture->h = h;
   texture->data = (uint32_t *)calloc(w * h, sizeof(uint32_t));
@@ -100,7 +100,7 @@ inline void initTexture_i(Texture *texture, uint16_t w, uint16_t h,
  * @param texture Pointer to the Texture to write.
  * @param path Path to the file where the texture will be written.
  */
-inline void writeTexture(const Texture *texture, const char *path) {
+void writeTexture(const Texture *texture, const char *path) {
   FILE *fp = fopen(path, "w");
   assert(fp && "File unable to be opened.");
   fprintf(fp, "%hu,%hu,", texture->w, texture->h);
@@ -117,7 +117,7 @@ inline void writeTexture(const Texture *texture, const char *path) {
  * @param texture Pointer to the Texture to initialize from the file.
  * @param path Path to the file containing the texture data.
  */
-inline void readTexture(Texture *texture, const char *path) {
+void readTexture(Texture *texture, const char *path) {
   FILE *fp = fopen(path, "r");
   assert(fp && "File unable to be opened.");
 
@@ -142,7 +142,7 @@ inline void readTexture(Texture *texture, const char *path) {
  *
  * @param texture Pointer to the Texture whose memory should be freed.
  */
-inline void freeTexture(Texture *texture) {
+void freeTexture(Texture *texture) {
   free(texture->data);
   texture->data = NULL;
 }
